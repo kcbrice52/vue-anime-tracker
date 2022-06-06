@@ -48,8 +48,10 @@ onMounted(() => {
       <h2>My Anime</h2>
 
       <div v-for="anime in my_anime_asc" :key="anime" class="anime">
-        <img :src="anime.image"  />
-        <h3>{{ anime.title }}</h3>
+        <div class="title">
+          <img :src="anime.image"  />
+          <h3>{{ anime.title }}</h3>
+        </div>
         <div class="flex-1"></div>
         <span class="episodes">
           {{ anime.watched_episodes }} / {{ anime.total_episodes }} episodes watched
