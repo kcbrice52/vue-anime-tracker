@@ -88,7 +88,7 @@ onMounted(() => {
           <button
           class="item-button positive"
           style="--i:2"
-          @click="remove(anime)">	&#10004;</button>
+          @click="javascript:void(0);">	&#10004;</button>
           <button
           class="item-button negative"
           style="--i:1"

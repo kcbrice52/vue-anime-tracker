@@ -162,8 +162,9 @@ form input {
   transition: 0.5s;
 }
 .myanime .anime img {
-  width: 125px;
-  height: 125px;
+  min-width: 6rem;
+  width: 40%;
+  max-width: 8rem;
   object-fit: cover;
   border: 1px solid #5a5a5a;
   border-radius: 0;
