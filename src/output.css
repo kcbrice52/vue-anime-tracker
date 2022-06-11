@@ -128,38 +128,126 @@ form input {
 
 .myanime .anime {
   display: flex;
-  align-items: center;
   margin-bottom: 1.5rem;
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  background-color: #3e3f46;
+  padding: 0;
+  border-radius: 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  color: #fff !important;
+  min-height: 125px;
 }
-
-.anime img {
-  width: 72px;
-  height: 72px;
+.myanime .anime:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 10px;
+  height: 100%;
+  background: #2e3133;
+  transform-origin: right;
+  transform: skewY(45deg);
+  transition: 0.5s;
+}
+.myanime .anime:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: #35383e;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: 0.5s;
+}
+.myanime .anime img {
+  width: 125px;
+  height: 125px;
   object-fit: cover;
-  border-radius: 1rem;
+  border: 1px solid #5a5a5a;
+  border-radius: 0;
   margin-right: 1rem;
 }
-
-.anime h3 {
-  color: #888;
+.myanime .anime .title {
+  align-self: end;
+  padding: 1em 0;
+}
+.myanime .anime h3 {
+  color: #fff;
   font-size: 1.125rem;
 }
-
-.anime .episodes {
+.myanime .anime .episodes {
   margin-right: 1rem;
   color: #888;
 }
-
-.anime .button:first-of-type {
-  margin-right: 1rem;
+.myanime .anime .actions {
+  flex-grow: 1;
+  text-align: right;
 }
-
-.anime .button:last-of-type {
-  margin-right: 0;
+.myanime .anime .item-button {
+  background-color: #52535a;
+  position: relative;
+  background-position: bottom;
+  background-size: 100% 200%;
+  border-bottom: 1px solid #313238;
+  transition: 0.3s;
+  padding: 1em;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  z-index: var(--i);
+}
+.myanime .anime .item-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 10px;
+  height: 0%;
+  background: #52535a;
+  transform-origin: right;
+  transform: skewY(45deg);
+  transition: 0.3s;
+}
+.myanime .anime .item-button:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: #4d4e54;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: 0.3s;
+  z-index: 99;
+}
+.myanime .anime .item-button.negative:hover, .myanime .anime .item-button.negative:focus {
+  background-position: top;
+  background-color: #9d3c3c;
+  transform: translateY(-10px);
+  padding-bottom: calc(1em + 10px);
+}
+.myanime .anime .item-button.negative:hover:before, .myanime .anime .item-button.negative:focus:before {
+  height: 10px;
+  background: #893434;
+}
+.myanime .anime .item-button.negative:hover::after, .myanime .anime .item-button.negative:focus::after {
+  background: #913737;
+}
+.myanime .anime .item-button.positive:hover, .myanime .anime .item-button.positive:focus {
+  background-position: top;
+  background-color: #0e6a1a;
+  transform: translateY(-10px);
+  padding-bottom: calc(1em + 10px);
+}
+.myanime .anime .item-button.positive:hover:before, .myanime .anime .item-button.positive:focus:before {
+  height: 10px;
+  background: #0b4e14;
+}
+.myanime .anime .item-button.positive:hover::after, .myanime .anime .item-button.positive:focus::after {
+  background: #0d5816;
 }
 
 .tabs {

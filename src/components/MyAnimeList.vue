@@ -38,6 +38,20 @@ const getEpisodes = anime => {
     });
 }
 
+const remove = anime => {
+
+  const list = JSON.parse(localStorage.getItem('my_anime'));
+
+  console.log(list);
+  const animeString = JSON.stringify(anime);
+  const animeObject = JSON.parse(animeString);
+  const index = list.findIndex((item) => item.id == animeObject.id);
+  list.splice(index, 1);
+  console.log(list);
+  localStorage.setItem('my_anime', JSON.stringify(list));
+  my_anime.value = JSON.parse(localStorage.getItem('my_anime')) || [];
+}
+
 onMounted(() => {
   my_anime.value = JSON.parse(localStorage.getItem('my_anime')) || [];
 });
@@ -45,28 +59,40 @@ onMounted(() => {
 
 <template>
   <div class="myanime" v-if="my_anime.length > 0">
+      
+      
       <h2>My Anime</h2>
 
+
       <div v-for="anime in my_anime_asc" :key="anime" class="anime">
-        <div class="title">
           <img :src="anime.image"  />
+        <div class="title">
           <h3>{{ anime.title }}</h3>
+          <span class="episodes">
+          {{ anime.total_episodes }} Episodes
+        </span>
         </div>
         <div class="flex-1"></div>
-        <span class="episodes">
-          {{ anime.watched_episodes }} / {{ anime.total_episodes }} episodes watched
-        </span>
+        <!--
         <button :disabled="anime.total_episodes === anime.watched_episodes"
           class="button"
           @click="increaseWatch(anime)">+</button>
         <button
           :disabled="anime.watched_episodes <= 0"
           class="button"
-          @click="decreaseWatch(anime)">-</button>
-        <div>
-          <button
+          @click="decreaseWatch(anime)">-</button>-->
+        <div class="actions">
+          <!--<button
           class="button view-button"
-          @click="getEpisodes(anime)">View</button>
+          @click="getEpisodes(anime)">View</button>-->
+          <button
+          class="item-button positive"
+          style="--i:2"
+          @click="remove(anime)">	&#10004;</button>
+          <button
+          class="item-button negative"
+          style="--i:1"
+          @click="remove(anime)">&times;</button>
         </div>
       </div>
       <div v-for="episode in episodes" :key="episode">
@@ -78,6 +104,8 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+
 a {
   color: #42b983;
 }
@@ -90,4 +118,6 @@ a {
   background-color: #ccc;
   background-image: none;
 }
+
+
 </style>

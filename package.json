@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "sass ./src/sass/styles.scss ./src/output.css && vite",
     "build": "sass ./src/sass/styles.scss ./src/output.css && vite build",
     "preview": "vite preview",
-    "css": "sass ./src/sass/styles.scss ./src/output.css"
+    "css": "sass -w ./src/sass/styles.scss ./src/output.css"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
